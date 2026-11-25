@@ -1,0 +1,45 @@
+Fraud pattern rules learned by a shallow decision tree
+=======================================================
+|--- amount_vs_cust_avg <= 2.50
+|   |--- mins_since_last_tx <= 7.09
+|   |   |--- tx_count_1h <= 2.50
+|   |   |   |--- mins_since_last_tx <= 3.08
+|   |   |   |   |--- class: 1
+|   |   |   |--- mins_since_last_tx >  3.08
+|   |   |   |   |--- class: 0
+|   |   |--- tx_count_1h >  2.50
+|   |   |   |--- category_code <= 4.50
+|   |   |   |   |--- class: 1
+|   |   |   |--- category_code >  4.50
+|   |   |   |   |--- class: 1
+|   |--- mins_since_last_tx >  7.09
+|   |   |--- amount_vs_cust_avg <= 2.15
+|   |   |   |--- log_amount <= 4.38
+|   |   |   |   |--- class: 0
+|   |   |   |--- log_amount >  4.38
+|   |   |   |   |--- class: 0
+|   |   |--- amount_vs_cust_avg >  2.15
+|   |   |   |--- hour <= 6.50
+|   |   |   |   |--- class: 1
+|   |   |   |--- hour >  6.50
+|   |   |   |   |--- class: 0
+|--- amount_vs_cust_avg >  2.50
+|   |--- amount_vs_cust_avg <= 3.55
+|   |   |--- mins_since_last_tx <= 14.02
+|   |   |   |--- class: 1
+|   |   |--- mins_since_last_tx >  14.02
+|   |   |   |--- hour <= 6.50
+|   |   |   |   |--- class: 1
+|   |   |   |--- hour >  6.50
+|   |   |   |   |--- class: 0
+|   |--- amount_vs_cust_avg >  3.55
+|   |   |--- amount_vs_cust_avg <= 4.68
+|   |   |   |--- new_device <= 0.50
+|   |   |   |   |--- class: 1
+|   |   |   |--- new_device >  0.50
+|   |   |   |   |--- class: 1
+|   |   |--- amount_vs_cust_avg >  4.68
+|   |   |   |--- amount_vs_cust_avg <= 5.59
+|   |   |   |   |--- class: 1
+|   |   |   |--- amount_vs_cust_avg >  5.59
+|   |   |   |   |--- class: 1
